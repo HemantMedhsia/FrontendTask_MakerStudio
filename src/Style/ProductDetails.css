@@ -1,0 +1,45 @@
+.filterbutton {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.filterbutton button {
+    width: 25% ;
+}
+
+/* ProductDetails.css */
+.select-wrapper {
+    position: relative;
+  }
+  
+  .select-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .select-wrapper select:focus {
+    outline: none;
+  }
+  
+  .select-wrapper::before {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .select-wrapper select::-ms-expand {
+    display: none;
+  }
+  
