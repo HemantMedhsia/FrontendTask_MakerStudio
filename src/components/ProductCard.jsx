@@ -23,7 +23,7 @@ function ProductCard({ id, image, desc, title, price, addToCart, viewDetails }) 
         <button onClick={handleAddToCart}>Add to Cart</button>
         <hr />
         <hr />
-        <button onClick={handleViewDetails}><Link to='/product'>View Product Details</Link></button>
+        <button onClick={handleViewDetails}><Link to={`/product?id=${id}`}>View Product Details</Link></button>
       </div>
     </div>
   );

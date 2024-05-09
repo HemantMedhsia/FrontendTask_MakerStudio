@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import '../Style/ViewCart.css';
+import { Link } from "react-router-dom";
 
 function ViewCart() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function ViewCart() {
       ) : (
         <p className="text-gray-700">Your cart is empty.</p>
       )}
+      <Link to='/'>Back to Home Page</Link>
     </div>
   );
 }
