@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+    background-color: rgb(155, 152, 185);
     
 }
 
@@ -43,3 +44,9 @@
     display: none;
   }
   
+  .cartbutton {
+    background: transparent;
+    color: black;
+    font-size: 25px;
+    /* border: 1px solid black; */
+  }

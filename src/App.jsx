@@ -1,17 +1,21 @@
+import React from "react";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ProductDetails from "./components/ProductDetails";
-import ProductList from "./components/ProductList";
-import ProductCard from "./components/ProductCard";
+import ViewCart from "./components/ViewCart";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Display from "./components/Display";
+import ProductDetailPage from "./components/ProductDetailPage";
 
 function App() {
   return (
     <>
-      <Navbar />
-      {/* <ProductDetails /> */}
-      <Display/>
-      <Footer />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Display />} />
+          <Route path='/viewCart' element={<ViewCart />} />
+          <Route path='/product' element={<ProductDetailPage />} />
+        </Routes>
+      </Router>
     </>
   );
 }

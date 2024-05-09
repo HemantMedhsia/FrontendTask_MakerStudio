@@ -1,0 +1,13 @@
+.box {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 14px;
+}
+
+.boxColor {
+    background-color: rgb(166, 236, 176);
+}

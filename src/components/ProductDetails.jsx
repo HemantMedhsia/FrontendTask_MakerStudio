@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import "../Style/ProductDetails.css";
+import { FaCartPlus } from "react-icons/fa";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
 function ProductDetails() {
   const [items, setItems] = useState([]);
   const [filterPrice, setFilterPrice] = useState(null);
+  const [cart, setCart] = useState([]); // State to hold the cart items
+  const [cartValue, setCartValue] = useState(0); // State to hold the cart value
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -15,6 +19,15 @@ function ProductDetails() {
   const handleFilterChange = (event) => {
     const selectedPrice = event.target.value;
     setFilterPrice(selectedPrice);
+  };
+
+  const addToCart = (product) => {
+    // Add the product to the cart
+    console.log(product);
+    setCart([...cart, product]);
+    // Update the cart value
+    console.log(cart);
+    setCartValue(cartValue + 1);
   };
 
   const filteredItems = items.filter((item) => {
@@ -33,14 +46,25 @@ function ProductDetails() {
             <option value="100">Price less than 100</option>
           </select>
         </div>
+        {/* Render the cart button with the cart value */}
+        <button className="cartbutton">
+          <Link
+            to={`/viewCart?cart=${JSON.stringify(cart)}&cartValue=${cartValue}`}
+          >
+            Cart <FaCartPlus style={{ fontSize: "25px", color: "red" }} />
+            <strong>{cartValue}</strong>
+          </Link>
+        </button>
       </div>
+      {/* Map through filtered items and render ProductCard components */}
       {filteredItems.map((item, key) => (
         <ProductCard
           key={key}
-          title={item.title}
+          id={item.id}
           image={item.image}
-          desc={item.description}
+          title={item.title}
           price={item.price}
+          addToCart={addToCart}
         />
       ))}
     </>
