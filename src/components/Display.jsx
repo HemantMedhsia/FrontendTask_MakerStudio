@@ -1,14 +1,15 @@
-import React from 'react'
-import ProductCard from './ProductCard'
-import '../Style/Display.css'
-import ProductDetails from './ProductDetails'
+import React from "react";
+import ProductDetails from "./ProductDetails";
+import "../Style/Display.css";
 
+// Display component renders the main content area, which includes product details
 function Display() {
   return (
-    <div className='maindiv'>
-        <ProductDetails/>
+    <div className="maindiv">
+      {/* Rendering the ProductDetails component */}
+      <ProductDetails />
     </div>
-  )
+  );
 }
 
-export default Display
+export default Display;

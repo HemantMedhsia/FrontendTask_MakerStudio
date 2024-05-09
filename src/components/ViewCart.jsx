@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import '../Style/ViewCart.css';
+import "../Style/ViewCart.css";
 import { Link } from "react-router-dom";
 
 function ViewCart() {
@@ -24,7 +24,10 @@ function ViewCart() {
       {parsedCart.length > 0 ? (
         <div>
           {parsedCart.map((item, index) => (
-            <div key={index} className="mb-4 border p-4 rounded-lg box boxColor">
+            <div
+              key={index}
+              className="mb-4 border p-4 rounded-lg box boxColor"
+            >
               <h3 className="text-lg font-bold mb-2">{item.title}</h3>
               <p className="text-gray-700">Price: {item.price}</p>
             </div>
@@ -34,7 +37,7 @@ function ViewCart() {
       ) : (
         <p className="text-gray-700">Your cart is empty.</p>
       )}
-      <Link to='/'>Back to Home Page</Link>
+      <Link to="/">Back to Home Page</Link>
     </div>
   );
 }

@@ -5,40 +5,66 @@ import { FaCartPlus } from "react-icons/fa";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
 function ProductDetails() {
+  // State for search query
+  const [searchQuery, setSearchQuery] = useState("");
+  // State for holding all items
   const [items, setItems] = useState([]);
+  // State for filtering price
   const [filterPrice, setFilterPrice] = useState(null);
-  const [cart, setCart] = useState([]); // State to hold the cart items
-  const [cartValue, setCartValue] = useState(0); // State to hold the cart value
+  // State for holding items in the cart
+  const [cart, setCart] = useState([]);
+  // State for holding the total value of items in the cart
+  const [cartValue, setCartValue] = useState(0);
 
+  // Fetching products from API on component mount
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => setItems(json));
   }, []);
 
+  // Handler for changing the filter price
   const handleFilterChange = (event) => {
     const selectedPrice = event.target.value;
     setFilterPrice(selectedPrice);
   };
 
+  // Handler for changing the search input
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // Function to add a product to the cart
   const addToCart = (product) => {
     // Add the product to the cart
-    console.log(product);
     setCart([...cart, product]);
     // Update the cart value
-    console.log(cart);
     setCartValue(cartValue + 1);
   };
 
-  const filteredItems = items.filter((item) => {
-    if (!filterPrice) return true; // if no filter selected, return all items
-    return item.price < parseInt(filterPrice);
-  });
+  // Filtering items based on search query and filter price
+  const filteredItems = items
+    .filter((item) => {
+      // Filter by price
+      if (!filterPrice) return true; // if no filter selected, return all items
+      return item.price < parseInt(filterPrice);
+    })
+    .filter((item) => {
+      // Filter by search query
+      if (!searchQuery) return true; // if no search query, return all items
+      const searchLower = searchQuery.toLowerCase();
+      return (
+        item.title.toLowerCase().includes(searchLower) ||
+        item.description.toLowerCase().includes(searchLower)
+      );
+    });
 
   return (
     <>
+      {/* Filter and search input */}
       <div className="filterbutton">
         <div className="select-wrapper">
+          {/* Dropdown for filtering by price */}
           <select onChange={handleFilterChange}>
             <option value="">Price All</option>
             <option value="20">Price less than 20</option>
@@ -46,7 +72,15 @@ function ProductDetails() {
             <option value="100">Price less than 100</option>
           </select>
         </div>
-        {/* Render the cart button with the cart value */}
+        {/* Search input */}
+        <input
+          className="input"
+          type="text"
+          placeholder="Search by name or description"
+          value={searchQuery}
+          onChange={handleSearchInputChange}
+        />
+        {/* Cart button */}
         <button className="cartbutton">
           <Link
             to={`/viewCart?cart=${JSON.stringify(cart)}&cartValue=${cartValue}`}
@@ -56,7 +90,7 @@ function ProductDetails() {
           </Link>
         </button>
       </div>
-      {/* Map through filtered items and render ProductCard components */}
+      {/* Rendering ProductCard components for filtered items */}
       {filteredItems.map((item, key) => (
         <ProductCard
           key={key}

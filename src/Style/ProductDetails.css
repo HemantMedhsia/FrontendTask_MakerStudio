@@ -50,3 +50,11 @@
     font-size: 25px;
     /* border: 1px solid black; */
   }
+
+  .input {
+    width:25%;
+    height: 30px;
+    margin: 10px;
+    margin-left: 30px;
+    
+  }
