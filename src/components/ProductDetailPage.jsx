@@ -43,7 +43,7 @@ function ProductDetailPage() {
             alt={product.title}
           />
           {/* Link to navigate back to Home Page */}
-          <Link to="/">Back to Home Page</Link>
+          <Link to="/Display">Back to Home Page</Link>
         </div>
       ) : (
         <p>Loading...</p>

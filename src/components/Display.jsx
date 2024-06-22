@@ -1,13 +1,36 @@
-import React from "react";
-import ProductDetails from "./ProductDetails";
-import "../Style/Display.css";
+import React, { useState, useEffect } from 'react';
+import ProductDetails from './ProductDetails';
+import '../Style/Display.css';
 
-// Display component renders the main content area, which includes product details
-function Display() {
+function Display({ name }) {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false); // Turn off loading after 1 second
+    }, 1000);
+
+    return () => clearTimeout(timer); // Cleanup timer on component unmount
+  }, []);
+
   return (
     <div className="maindiv">
-      {/* Rendering the ProductDetails component */}
-      <ProductDetails />
+      <div className="login">
+        <div className="abc">Ftask</div>
+        <div className="abc inner">
+          <div className="prof"></div>
+          <div className="name">{name}</div>
+        </div>
+      </div>
+      {loading ? (
+        <div className="skeleton">
+          <div className="skeleton-line"></div>
+          <div className="skeleton-line"></div>
+          <div className="skeleton-line"></div>
+        </div>
+      ) : (
+        <ProductDetails />
+      )}
     </div>
   );
 }

@@ -19,7 +19,7 @@ function ViewCart() {
   }
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md box">
+    <div className="max-w-md mx-auto p-6 rounded-lg shadow-md box">
       <h2 className="text-2xl font-bold mb-4">View Cart</h2>
       {parsedCart.length > 0 ? (
         <div>

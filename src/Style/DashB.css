@@ -1,0 +1,82 @@
+.dashboard {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .dashboard-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+  }
+  
+  .dashboard-main {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  
+  .login-section, .info-section {
+    width: 81%;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .login-section h2, .info-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .login-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #45a049;
+  }
+  
+  .info-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .info-section li {
+    margin: 5px 0;
+  }
+  
+  .dashboard-footer {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .active, .common {
+    margin-top: 20px;
+  }
+
+  .signup-section {
+    height: 320px;
+    width: 100%;
+    margin-top: 20px;
+  }
